@@ -3,8 +3,8 @@ import { Welcome } from "../components/welcome";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
+    { title: "Base 64 Tools" },
+    { name: "description", content: "Welcome to Base 64 Tools!" },
   ];
 }
 

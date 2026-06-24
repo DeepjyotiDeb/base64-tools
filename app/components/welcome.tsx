@@ -8,9 +8,34 @@ export function Welcome() {
     try {
       const parsed = JSON.parse(pastedText);
       e.preventDefault();
-      setValue(parsed.body || "");
-    } catch {}
+      const bodyValue = findBodyRecursive(parsed);
+      setValue(bodyValue || "");
+    } catch (error) {
+      console.log("error pasting", error);
+    }
   };
+
+  function findBodyRecursive(obj: any): any {
+    // If obj is null or not an object, return undefined
+    if (!obj || typeof obj !== "object") return undefined;
+
+    // Check if current object has a "body" property
+    if ("body" in obj) {
+      return obj.body;
+    }
+
+    // Recursively search through all properties
+    for (let key in obj) {
+      if (obj.hasOwnProperty(key) && typeof obj[key] === "object") {
+        const result: any = findBodyRecursive(obj[key]);
+        if (result !== undefined) {
+          return result;
+        }
+      }
+    }
+
+    return undefined;
+  }
 
   return (
     <main className="relative overflow-hidden bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50">

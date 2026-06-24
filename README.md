@@ -1,87 +1,80 @@
-# Welcome to React Router!
+# Base64 Converter App
 
-A modern, production-ready template for building full-stack React applications using React Router.
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+A React Single Page Application that converts Base64 data to images or PDFs. Built with React Router for seamless navigation between different conversion tools.
 
 ## Features
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+- Convert Base64 strings to images with customizable width and height
+- Convert Base64 strings to PDF documents
+- Support for both image and PDF Base64 data formats
+- User-friendly interface with drag-and-drop support
+- Real-time preview for images
+- Download converted files directly
 
-## Getting Started
+## Input Format
 
-### Installation
+### For Images
+The Base64 image input should follow this format:
+```json
+{
+  "body": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUg...",
+  "width": 800,
+  "height": 600
+}
+```
 
-Install the dependencies:
+### For PDFs
+The Base64 PDF input should be a plain Base64 string:
+```
+JVBERi0xLjQKMSAwIG9iago8PAovVGl0bGUgK...
+```
 
+## Tech Stack
+
+- React 19+
+- React Router DOM v7
+- Tailwind CSS for styling
+- jsPDF for PDF generation
+- FileSaver for file downloads
+
+## Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/DeepjyotiDeb/base64-tools.git
+cd base64-tools
+```
+
+2. Install dependencies:
 ```bash
 npm install
 ```
 
-### Development
-
-Start the development server with HMR:
-
+3. Start the development server:
 ```bash
-npm run dev
+npm start
 ```
 
-Your application will be available at `http://localhost:5173`.
+4. Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-## Building for Production
+## Usage
 
-Create a production build:
+### Converting to Image
 
-```bash
-npm run build
-```
+1. Navigate to the Image Converter page
+2. Paste your Base64 data in the JSON format:
+   ```json
+   {
+     "body": "data:image/png;base64,YOUR_BASE64_DATA",
+     "width": 800,
+     "height": 600
+   }
+   ```
 
-## Deployment
+### Converting to PDF
 
-### Docker Deployment
-
-To build and run using Docker:
-
-```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
+1. Navigate to the PDF Converter page
+2. Paste your Base64 PDF data:
+   ```
+   JVBERi0xLjQKMSAwIG9iago8PAovVGl0bGUgK...
+   ```
