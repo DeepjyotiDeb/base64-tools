@@ -7,9 +7,30 @@
 
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
+  min-height: 100%;
+  background:
+    radial-gradient(circle at top, rgba(59, 130, 246, 0.12), transparent 30%),
+    linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+  color: rgb(15 23 42);
+}
 
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
+html {
+  color-scheme: light dark;
+}
+
+body {
+  margin: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background:
+      radial-gradient(circle at top, rgba(59, 130, 246, 0.2), transparent 28%),
+      linear-gradient(180deg, #020617 0%, #0f172a 100%);
+    color: rgb(248 250 252);
   }
+}
+
+::selection {
+  background: rgba(59, 130, 246, 0.24);
 }
