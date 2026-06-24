@@ -18,7 +18,7 @@ export default function Base64ToPdf() {
     <main className="relative overflow-hidden bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.18),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(16,185,129,0.14),transparent_30%)] dark:bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.24),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(16,185,129,0.14),transparent_30%)]" />
 
-      <div className="relative mx-auto flex w-full items-center px-4 py-8 sm:px-6 lg:px-8 bg-red-500">
+      <div className="relative mx-auto flex w-full items-center px-4 py-8 sm:px-6 lg:px-8 ">
         <section className="w-full rounded-3xl border border-slate-200/80 bg-white/80 p-5 shadow-[0_24px_80px_-40px_rgba(15,23,42,0.45)] backdrop-blur-xl dark:border-slate-800 dark:bg-slate-900/70 dark:shadow-[0_24px_80px_-40px_rgba(0,0,0,0.7)] sm:p-6 lg:p-8">
           <div className="mb-6 flex flex-col gap-2">
             <span className="inline-flex w-fit items-center rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-xs font-medium tracking-wide text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300">
