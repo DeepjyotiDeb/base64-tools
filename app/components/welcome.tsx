@@ -4,14 +4,22 @@ export function Welcome() {
   const [value, setValue] = useState("");
   const handlePaste = (e: React.ClipboardEvent<HTMLTextAreaElement>) => {
     const pastedText = e.clipboardData.getData("text");
+    e.preventDefault();
 
     try {
       const parsed = JSON.parse(pastedText);
-      e.preventDefault();
       const bodyValue = findBodyRecursive(parsed);
-      setValue(bodyValue || "");
-    } catch (error) {
-      console.log("error pasting", error);
+      if (bodyValue) {
+        console.log("[paste] success: found body property");
+        setValue(bodyValue);
+      } else {
+        console.log("[paste] fail: no body property found, using raw text");
+        setValue(pastedText);
+      }
+    } catch {
+      // Not JSON — treat as raw base64
+      console.log("[paste] fail: not valid JSON, using raw text");
+      setValue(pastedText);
     }
   };
 

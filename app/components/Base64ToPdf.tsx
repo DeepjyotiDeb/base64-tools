@@ -5,14 +5,29 @@ export default function Base64ToPdf() {
 
   const handlePaste = (e: React.ClipboardEvent<HTMLTextAreaElement>) => {
     const pastedText = e.clipboardData.getData("text");
+    e.preventDefault();
+
     try {
       const parsed = JSON.parse(pastedText);
-      e.preventDefault();
-      setValue(parsed.body || "");
+      const bodyValue = findBodyRecursive(parsed);
+      setValue(bodyValue || pastedText);
     } catch {
-      // Not JSON — use raw value
+      // Not JSON — treat as raw base64
+      setValue(pastedText);
     }
   };
+
+  function findBodyRecursive(obj: any): any {
+    if (!obj || typeof obj !== "object") return undefined;
+    if ("body" in obj) return obj.body;
+    for (const key in obj) {
+      if (Object.prototype.hasOwnProperty.call(obj, key) && typeof obj[key] === "object") {
+        const result = findBodyRecursive(obj[key]);
+        if (result !== undefined) return result;
+      }
+    }
+    return undefined;
+  }
 
   return (
     <main className="relative overflow-hidden bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50">
